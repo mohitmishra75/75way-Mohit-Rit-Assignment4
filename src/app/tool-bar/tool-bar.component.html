@@ -1,0 +1,38 @@
+<div class="tool-bar-wrapper">
+	<div #select (click)="execFunc('select')" class="icon-prefix name-info-wrapper">
+		<fa-icon [icon]="faMousePointer" [fixedWidth]="true" size="sm"></fa-icon>
+		<div class="name-info-column">Select</div>
+	</div>
+	<div #hand (click)="execFunc('hand')" class="icon-prefix name-info-wrapper">
+		<fa-icon [icon]="faHandPaper" [fixedWidth]="true" size="sm"></fa-icon>
+		<div class="name-info-column">Hand</div>
+	</div>
+	<div #pen (click)="execFunc('pen')" class="icon-prefix name-info-wrapper">
+		<fa-icon [icon]="faPenNib" [fixedWidth]="true" size="sm"></fa-icon>
+		<div class="name-info-column">Pen</div>
+	</div>
+	<div #eraser (click)="execFunc('eraser')" class="icon-prefix name-info-wrapper">
+		<fa-icon [icon]="faEraser" [fixedWidth]="true" size="sm"></fa-icon>
+		<div class="name-info-column">Eraser</div>
+	</div>
+	<div #createSquare (click)="execFunc('square')" class="icon-prefix name-info-wrapper">
+		<fa-icon [icon]="faSquare" [fixedWidth]="true" size="sm"></fa-icon>
+		<div class="name-info-column">Create Shape: Square</div>
+	</div>
+	<div #createLine (click)="execFunc('line')" class="icon-prefix name-info-wrapper">
+		<div class="fa-line"></div>
+		<div class="name-info-column">Create Shape: Line</div>
+	</div>
+	<div #zoom (click)="execFunc('zoom')" class="icon-prefix name-info-wrapper">
+		<fa-icon [icon]="faZoom" [fixedWidth]="true" size="sm" class="invert-icon"></fa-icon>
+		<div class="name-info-column">Zoom</div>
+	</div>
+	<div #addText (click)="execFunc('text')" class="icon-prefix name-info-wrapper">
+		<fa-icon [icon]="faFont" [fixedWidth]="true" size="sm"></fa-icon>
+		<div class="name-info-column">Add Text</div>
+	</div>
+	<div #addText (click)="execFunc('circle')" class="icon-prefix name-info-wrapper">
+		<fa-icon [icon]="faCircle" [fixedWidth]="true" size="sm"></fa-icon>
+		<div class="name-info-column">Add Circle</div>
+	</div>
+</div>

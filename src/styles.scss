@@ -1,0 +1,23 @@
+@import './reset';
+@import './app/variables';
+// For pickr
+@import '@simonwep/pickr/dist/themes/monolith.min.css';
+
+html {
+	overflow: hidden;
+	background-color: #ffffff;
+}
+
+.custom-pickr {
+	background-color: #32303f;
+	border: solid 1px $mid-white;
+}
+
+.not-implemented-yet {
+	pointer-events: none;
+	color: rgba($white, 0.3) !important;
+
+	.fa-line {
+		background-color: rgba($white, 0.3) !important;
+	}
+}

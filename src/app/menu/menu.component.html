@@ -1,0 +1,99 @@
+<div class="flex-space-between">
+	<div class="menu-wrapper">
+		<div *ngIf="activeStickFlg" (click)="initializeActiveStates()" class="prevent-prefix prevent-pointer-leave"></div>
+		<ng-template ngFor let-menuTitle="$implicit" [ngForOf]="menuTitles" let-i="index">
+			<div (click)="toggleActiveSticks()" (pointerover)="removeActives('menu', $event)" appActiveMenu class="menu">
+				<span #menuTitlesRef class="menu-title">{{ menuTitle }}</span>
+				<div
+					#menuListsRef
+					(click)="$event.stopPropagation()"
+					[ngClass]="{ 'active-stick': activeStickFlg }"
+					appActiveMenu
+					class="menu-list main-menu-list prevent-pointer-leave"
+				>
+					<ul>
+						<ng-template ngFor let-menuList="$implicit" [ngForOf]="menuLists[i]" let-i="index">
+							<div *ngIf="menuList.type === 2; then thenBlock; else elseBlock"></div>
+							<ng-template #thenBlock>
+								<li class="separator-wrapper"><div class="separator"></div></li>
+							</ng-template>
+							<ng-template #elseBlock>
+								<li
+									(pointerover)="removeActives('menuList', $event); $event.stopPropagation()"
+									appActiveMenu
+									[ngClass]="{ 'sub-menu-list-wrapper': menuList.type === 1 }"
+								>
+									<div #menuListTitlesRef (click)="menuList.exec()" class="menu-list-title">
+										<span>{{ menuList.title }}</span>
+										<span *ngIf="menuList.type !== 1">{{ menuList.key }}</span>
+										<span *ngIf="menuList.type === 1"
+											><fa-icon [icon]="faCaretRight" [fixedWidth]="true" size="sm"></fa-icon
+										></span>
+									</div>
+
+									<div
+										#subMenuListsRef
+										class="menu-list sub-menu-list prevent-pointer-leave"
+										*ngIf="menuList.type === 1"
+									>
+										<ul>
+											<ng-template ngFor let-subMenuList="$implicit" [ngForOf]="menuList.subMenuList" let-i="index">
+												<div *ngIf="subMenuList.type === 2; then thenBlock; else elseBlock"></div>
+												<ng-template #thenBlock>
+													<li class="separator-wrapper"><div class="separator"></div></li>
+												</ng-template>
+												<ng-template #elseBlock>
+													<li
+														(pointerover)="removeActives('subMenuList', $event); $event.stopPropagation()"
+														appActiveMenu
+														[ngClass]="{ 'sub-menu-list-wrapper': subMenuList.type === 1 }"
+													>
+														<div #subMenuListTitlesRef (click)="subMenuList.exec()" class="menu-list-title">
+															<span>{{ subMenuList.title }}</span>
+															<span *ngIf="subMenuList.type !== 1">{{ subMenuList.key }}</span>
+															<span *ngIf="subMenuList.type === 1"
+																><fa-icon [icon]="faCaretRight" [fixedWidth]="true" size="sm"></fa-icon
+															></span>
+														</div>
+
+														<div
+															#subSubMenuListsRef
+															class="menu-list sub-menu-list prevent-pointer-leave"
+															*ngIf="subMenuList.type === 1"
+														>
+															<ul>
+																<ng-template
+																	ngFor
+																	let-subMenuList="$implicit"
+																	[ngForOf]="subMenuList.subMenuList"
+																	let-i="index"
+																>
+																	<div *ngIf="subMenuList.type === 2; then thenBlock; else elseBlock"></div>
+																	<ng-template #thenBlock>
+																		<li class="separator-wrapper"><div class="separator"></div></li>
+																	</ng-template>
+																	<ng-template #elseBlock>
+																		<li (pointerover)="$event.stopPropagation()">
+																			<div (click)="subMenuList.exec()" class="menu-list-title">
+																				<span>{{ subMenuList.title }}</span>
+																				<span>{{ subMenuList.key }}</span>
+																			</div>
+																		</li>
+																	</ng-template>
+																</ng-template>
+															</ul>
+														</div>
+													</li></ng-template
+												>
+											</ng-template>
+										</ul>
+									</div>
+								</li>
+							</ng-template>
+						</ng-template>
+					</ul>
+				</div>
+			</div>
+		</ng-template>
+	</div>
+</div>

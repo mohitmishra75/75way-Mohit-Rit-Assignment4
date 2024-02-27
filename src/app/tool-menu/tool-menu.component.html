@@ -1,0 +1,35 @@
+<div class="tool-menu-wrapper">
+	<div (click)="save()" class="icon-prefix name-info-wrapper">
+		<fa-icon [icon]="faSave" [fixedWidth]="true" size="sm"></fa-icon>
+		<div class="name-info-row">Save</div>
+	</div>
+	<div (click)="undo()" class="icon-prefix name-info-wrapper">
+		<fa-icon [icon]="faUndo" [fixedWidth]="true" size="sm"></fa-icon>
+		<div class="name-info-row">Undo</div>
+	</div>
+	<div (click)="redo()" class="icon-prefix name-info-wrapper">
+		<fa-icon [icon]="faRedo" [fixedWidth]="true" size="sm"></fa-icon>
+		<div class="name-info-row">Redo</div>
+	</div>
+	<div (click)="cleanUp()" class="icon-prefix name-info-wrapper">
+		<fa-icon [icon]="faQuidditch" [fixedWidth]="true" size="sm"></fa-icon>
+		<div class="name-info-row">Reset to Blank</div>
+	</div>
+
+	<div class="separator-wrapper">
+		<div class="separator"></div>
+	</div>
+
+	<div id="pickr-wrapper" class="tool-menu-prefix name-info-wrapper">
+		<div id="pickr"></div>
+		<div #pickrInfo class="name-info-row">Color Picker</div>
+	</div>
+	<div class="name-info-wrapper">
+		<div #brushSizeWrapper appSlideBrushSize class="brush-size-wrapper tool-menu-prefix">
+			<div #brushSizeMeter class="brush-size-meter"></div>
+			<div *ngIf="previousBrushState === 'draw'" class="brush-size-info">{{ drawBrushSize }}px</div>
+			<div *ngIf="previousBrushState === 'erase'" class="brush-size-info">{{ eraseBrushSize }}px</div>
+		</div>
+		<div class="name-info-row">Brush Size</div>
+	</div>
+</div>
